@@ -1,0 +1,28 @@
+<div class="card my-2 border-0 bg-pirple shadow border rounded-xl">
+  <div class="card-header font-weight-bold text-light">
+    Suggestions/friends
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="d-flex list-group-item justify-content-between" *ngFor="let user of allUsers">
+    <div>
+      <img [src]="user?.profilPhoto!=null ? user?.profilPhoto :'../../../assets/DefaultProfileImage.jpg'"
+           alt="ProfilImage" class="rounded-circle"
+           style="width: 45px;height:45px;">
+      <span class="font-weight-bold text-muted">
+        <a (click)="sendData(user)" [routerLink]="['profil/notUser']">
+           {{user?.firstName}}&nbsp;{{user?.lastName}}
+        </a>
+      </span>
+    </div>
+      <div>
+        <button type="submit" class="btn bg-addPost rounded-pill font-weight-bold text-light" (click)="follow(user?.id)" *ngIf="!isAFollowing(user?.id)">
+          follow
+        </button>
+        <button type="submit" class="btn btn-warning rounded-pill font-weight-bold text-light" (click)="unfollow(user?.id)" *ngIf="isAFollowing(user?.id)">
+          unfollow
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
+

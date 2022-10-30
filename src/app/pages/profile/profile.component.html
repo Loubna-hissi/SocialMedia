@@ -1,0 +1,69 @@
+<div class="my-2 border-0" >
+    <form [formGroup]="profileOrCoverImageUser" (ngSubmit)="UpdateImageUser()" class="row mx-1">
+      <div class="icon-upload backgroundicon " *ngIf="isUser">
+        <label for="file-input" role="button" class="shadow border rounded-xl backgroundimg rounded">
+          <img [src]="currentUser?.couvertPhoto!=null ? currentUser?.couvertPhoto :'../../../assets/covertImage.jpg'"
+          class=" shadow border rounded-xl backgroundimg rounded" alt="covertImageUser">
+        </label>
+      <input formControlName="photoCover" id="file-input" type="file" accept="image/*" (change)="onKeyPressEventCover($event)"/>
+      </div>
+      <img [src]="currentUser?.couvertPhoto!=null ? currentUser?.couvertPhoto :'../../../assets/covertImage.jpg'"
+          class="shadow border rounded-xl backgroundimg rounded" alt="covertImageUser" *ngIf="!isUser">
+      <div class="icon-upload covertIcon position-absolute rounded-circle" *ngIf="isUser">
+      <label for="file-input" role="button">
+      <img [src]="currentUser?.profilPhoto!=null ? currentUser?.profilPhoto :'../../../assets/DefaultProfileImage.jpg'"
+           alt="covertImageUser" class=" covertImage rounded-circle ">
+      </label>
+      <input formControlName="photoProfile" #videoImage id="file-input" type="file" accept="image/*" (change)="onKeyPressEventProfile($event)"/>
+      </div>
+      <img [src]="currentUser?.profilPhoto!=null ? currentUser?.profilPhoto :'../../../assets/DefaultProfileImage.jpg'"
+           alt="covertImageUser" class="covertImage position-absolute rounded-circle " *ngIf="!isUser">
+      <div class="row ml-30">
+        <div class="col-md-6">
+      <h2>
+        {{currentUser?.firstName}}&nbsp;{{currentUser?.lastName}}
+      </h2>
+      <h5 class="text-muted">
+        {{currentUser?.followers?.length}}&nbsp;Follower(s)
+        {{currentUser?.followings?.length}}&nbsp;Following(s)
+      </h5>
+     </div>
+      <div class="col-md-6 my-4 text-right" *ngIf="isUser">
+        <button type="submit" class="btn bg-addPost rounded-pill font-weight-bold text-light" (click)="toEditProfile()">Edit profile</button>
+      </div>
+      </div>
+    </form>
+    <div class="px-3" style="max-height :100px !important;overflow: hidden;overflow-y: scroll;">
+    <div class="card my-3 shadow border rounded-xl border-0">
+      <h5 class="card-header bg-pirple text-light">Intro</h5>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex align-items-center" role="button">
+            <i class="fas fa-biohazard fa-lg text-title"></i>
+            <p class="m-2" *ngIf="currentUser?.bio">"{{currentUser?.bio}}"</p>
+            <p class="m-2" *ngIf="!currentUser?.bio">Bio...</p>
+          </li>
+          <li class="list-group-item d-flex align-items-center" role="button">
+            <i class="fas fa-graduation-cap fa-lg text-title"></i>
+            <p class="m-2">Studied at {{currentUser?.school}}...</p>
+          </li>
+          <li class="list-group-item d-flex align-items-center" role="button">
+            <i class="fas fa-user-tie fa-lg text-title"></i>
+            <p class="m-2">Work at {{currentUser?.job}}...</p>
+          </li>
+          <li class="list-group-item d-flex align-items-center" role="button">
+            <i class="fas fa-venus-mars fa-lg text-title"></i>
+            <p class="m-2" *ngIf="currentUser?.gender">{{currentUser?.gender}}</p>
+            <p class="m-2" *ngIf="!currentUser?.gender">Male-Female-Personalized ...</p>
+          </li>
+          <li class="list-group-item d-flex align-items-center" role="button">
+            <i class="fas fa-ring fa-lg text-title"></i>
+            <p class="m-2" *ngIf="currentUser?.familyStituation">{{currentUser?.familyStituation}}</p>
+            <p class="m-2" *ngIf="!currentUser?.familyStituation">Sengle-married-widower-divorced ...</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

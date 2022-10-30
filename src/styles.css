@@ -1,1 +1,86 @@
 /* You can add global styles to this file, and also import other style files */
+
+.text-title{
+  color:#7B5995
+}
+.text-title2{
+  color: rgb(59, 58, 58);
+}
+.bg-pirple{
+   background-color: #a770d4;
+}
+.text-big-title{
+  color:#30043F
+}
+.mt-10{
+  margin-top: 5rem;
+}
+.icon-upload>input {
+  display: none;
+}
+.bg-orange{
+ background:#F3AC40;
+}
+body{
+  background-color: rgb(250, 255, 245);
+}
+video {
+  width: 100%;
+  height: auto;
+}
+img{
+  width: 100%;
+  max-height: 320px;
+}
+.img{
+  width: 100%;
+  max-height: 320px;
+}
+#container{
+  width: 250px;
+}
+.bg-addPost{
+  background-color: #fd9e9e;
+}
+.text-pikch{
+  color:#fd9e9e;
+}
+.bg-addPost:hover{
+  background-color: #fa8080;
+  border-color: #fa8080;
+}
+.bg-pirple:hover{
+  background-color: #9559c7;
+  border-color: #9559c7;
+}
+.btn:focus {
+  box-shadow: none;
+}
+input:focus {
+  box-shadow: none;
+}
+.bg-comment{
+  background-color: #f8f4fc;
+}
+a{
+  text-decoration: none!important;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

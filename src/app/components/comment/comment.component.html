@@ -1,0 +1,25 @@
+<div class="container my-1">
+  <div *ngFor="let postComment of postComments">
+    <div class="bg-comment rounded my-1">
+      <div class="row bg-title mx-1">
+        <div class="col-sx-2 m-1">
+          <img
+            [src]="postComment.commenter.profilPhoto!=null ?postComment.commenter.profilPhoto :'../../../assets/DefaultProfileImage.jpg'"
+            alt="imageCommenter" style="width: 45px;height:45px;" class="rounded-circle">
+        </div>
+        <div class="col-sx-2 font-weight-bold mx-1 my-2">
+          <p>{{postComment.commenter.firstName}}&nbsp;{{postComment.commenter.lastName}}</p>
+        </div>
+      </div>
+      <div class="row mx-5">
+        <p class="mx-2">{{postComment.contenu}}</p>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="commentForm" (ngSubmit)="addComment()" class="d-flex my-2">
+    <input type="text" class="form-control" formControlName="contenu" placeholder="Your comment...">
+    <button type="submit" class="btn">
+      <i class="fas fa-paper-plane fa-xl"></i>
+    </button>
+  </form>
+</div>

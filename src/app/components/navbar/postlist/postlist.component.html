@@ -1,0 +1,46 @@
+<div *ngFor="let post of postsList; index as i">
+  <div class="card shadow border rounded-2xl my-2 rounded">
+    <div class="card-body">
+      <small class="row text-muted justify-content-end">{{post.datePost|date}}</small>
+      <div class="row mx-1">
+        <img [src]="post.poster?.profilPhoto!=null ? post.poster?.profilPhoto :'../../../assets/DefaultProfileImage.jpg'" alt="ProfilImage"
+            class="rounded-circle border"
+            style="width: 45px;height:45px;">
+        <p class="font-weight-bold mx-1"> {{post.poster?.firstName}}&nbsp;{{post.poster?.lastName}}</p>
+      </div>
+      <p class="my-2 mx-5 text" *ngIf="post?.description">{{ showMore ? (post?.description):(post?.description | slice:0:150) }}
+        <span *ngIf="post?.description!.length>150">
+        <a href="javascript:;" *ngIf="!showMore" (click)="onShow()">...[Show More]</a>
+        <a href="javascript:;" *ngIf="showMore" (click)="onShow()">.[Show Less]</a> -->
+        </span>
+      </p>
+      <div class="row my-1 border" *ngIf="post.photo || post.video">
+        <img id="blah" [src]="post.photo" *ngIf="post.photo" />
+        <video controls *ngIf="post.video">
+          <source [src]="post.video" type="video/mp4">
+        </video>
+      </div>
+      <div class="row bg--warning justify-content-between">
+        <div class="col-xs-6 mx-3">
+        <button type="button" class="btn" (click)="likeOrDislikePost(post.id);$event.stopPropagation();">
+          <i class="fa fa-heart-o fa-xl" aria-hidden="true" *ngIf="!isLikedPost(post)"></i>
+          <i class="fa fa-heart fa-xl text-danger" aria-hidden="true" *ngIf="isLikedPost(post)"></i>
+        </button>
+        </div>
+        <div class="col-xs-6">
+            <button type="button" class="btn" (click)="hiddeItems[i]=!hiddeItems[i]" >
+              <i class="fas fa-comment-alt fa-xl"></i>
+            </button>
+        </div>
+      </div>
+      <div class="my-1" *ngIf="hiddeItems[i]">
+       <app-comment [idPost]="post.id"></app-comment>
+      </div>
+    </div>
+</div>
+</div>
+<div class="container d-flex flex-column justify-content-center align-items-center" *ngIf="!postsList">
+  <div class="spinner-border text-danger mt-5" role="status"></div>
+  <div class="">Loading...</div>
+</div>
+

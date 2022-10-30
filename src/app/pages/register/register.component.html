@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="row vh-100 ">
+    <div class="col-md-6 col-sm-12 mx-auto my-auto">
+      <div class="card mx-auto shadow border p-2" style="width:23rem;">
+        <div class="card-body ">
+          <h5 class="card-title">Sign Up</h5>
+          <h6 class="card-subtitle mb-2 text-muted">It's quick and easy</h6>
+          <form (ngSubmit)="registration()" [formGroup]="registrationForm">
+          <div class="form-group">
+            <input type="text"
+                   class="form-control"
+                   placeholder="&#xf007; Fist name"
+                   style="font-family:Arial, FontAwesome"
+                   formControlName="firstName"
+                   [ngClass]="{'is-invalid': submitted && f['firstName'].errors }"
+                   >
+            <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+                <div *ngIf="f['firstName'].errors?.['required']">First Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text"
+                   class="form-control"
+                   placeholder="&#xf007; Last name"
+                   style="font-family:Arial, FontAwesome"
+                   formControlName="lastName"
+                   [ngClass]="{'is-invalid': submitted && f['lastName'].errors }"
+                   >
+            <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+                  <div *ngIf="f['lastName'].errors?.['required']">Last Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="email"
+                   class="form-control"
+                   aria-describedby="helpId"
+                   placeholder="&#xf0e0; Email"
+                   style="font-family:Arial, FontAwesome"
+
+                   formControlName="email"
+                   [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+                   >
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                  <div *ngIf="f['email'].errors?.['required']">Email is required</div>
+                  <div *ngIf="f['email'].errors?.['email']">Email must be a valid email address</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="">Birtday</label>
+            <input type="date"
+                   class="form-control"
+                   aria-describedby="helpId"
+                   formControlName="birthday"
+                   [ngClass]="{ 'is-invalid': submitted && f['birthday'].errors}"
+                   >
+            <div *ngIf="submitted && f['birthday'].errors" class="invalid-feedback">
+                <div *ngIf="f['birthday'].errors?.['required']">birthday is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password"
+                   class="form-control"
+                   aria-describedby="helpId"
+                   placeholder="&#xf023; Password"
+                   style="font-family:Arial, FontAwesome"
+                   formControlName="password"
+                   [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+                   >
+            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                <div *ngIf="f['password'].errors?.['required']">password is required</div>
+                <div *ngIf="f['password'].errors?.['minlength']">Password must be at least 6 characters</div>
+            </div>
+          </div>
+          <div class="mt-1">
+            <button type="submit"
+                    class="btn btn-block bg-pirple text-light"
+                    >
+                    Sing up
+            </button>
+          </div>
+          </form>
+          <div class="d-flex mt-1">
+              <hr >
+              <span>OR</span>
+              <hr>
+          </div>
+          <span>Already a user? <a [routerLink]="['/login']">SIGN IN</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

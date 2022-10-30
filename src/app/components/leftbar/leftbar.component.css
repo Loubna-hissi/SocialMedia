@@ -1,0 +1,8 @@
+a:hover
+{
+color: #f38328;
+}
+.active{
+ color:#F3AC40;
+ text-decoration:solid #f38328
+}
